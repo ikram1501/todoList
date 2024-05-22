@@ -1,7 +1,6 @@
 import React from 'react'
-import TodoItem from './TodoItem'
+import TodoItem from './TodoItem' // Lakukan import
 
-// Menerima function toggleCompleted sebagai sebuah prop
 const Todos = ({ todos, toggleCompleted }) => {
   return (
     <div style={styles.container}>
@@ -21,7 +20,7 @@ const Todos = ({ todos, toggleCompleted }) => {
 
 const styles = {
   container: {
-    width: '40%',
+    width: '100%',
     margin: '0 auto',
   },
 }
