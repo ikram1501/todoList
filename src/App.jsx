@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import Todos from './components/Todos';
+import Todos from './components/Todos';  // Lalukan Import
+import TodoForm from './components/TodoForm'
 
 function App() {
   const [todos, setTodos] = useState([
@@ -22,10 +23,22 @@ function App() {
 
   console.log(todos)
 
+  const toggleCompleted = (todoId) => {
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === todoId) {
+        todo.completed = !todo.completed
+      }
+      return todo
+    })
+    setTodos(updatedTodos)
+  }
+
   return (
     <div style={styles.container}>
       <h1 style={styles.title}>My Todo List</h1>
-      <Todos todos={todos} />
+      {/* Teruskan function toggleCompleted ke component Todos */}
+      <Todos todos={todos} toggleCompleted={toggleCompleted} />
+      
     </div>
   )
 }
@@ -33,7 +46,7 @@ function App() {
 const styles = {
   container: {
     textAlign: 'center',
-    padding: '12px',
+    padding: '40px',
   },
   title: {
     fontSize: '36px',
