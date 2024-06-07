@@ -1,27 +1,23 @@
-import React from 'react'
+import React from 'react';
 
-const TodoItem = ({ todo, toggleCompleted }) => {
+const TodoItem = ({ todo, toggleCompleted, deleteTodo }) => {
   const getTodoTitleStyle = () => {
-    if (todo.completed === true) {
-      return { textDecoration: 'line-through' }
-    } else {
-      return { textDecoration: 'none' }
-    }
-  }
+    return todo.completed ? { textDecoration: 'line-through' } : { textDecoration: 'none' };
+  };
 
   return (
     <div style={styles.todoItem}>
       <input
         type="checkbox"
         style={styles.checkbox}
+        checked={todo.completed}
         onChange={() => toggleCompleted(todo.id)}
       />
       <p style={getTodoTitleStyle()}>{todo.title}</p>
-      {/* Tambahkan sebuah button di sini */}
-      <button style={styles.button}>X</button>
+      <button style={styles.button} onClick={() => deleteTodo(todo.id)}>X</button>
     </div>
-  )
-}
+  );
+};
 
 const styles = {
   todoItem: {
@@ -46,6 +42,6 @@ const styles = {
     cursor: 'pointer',
     fontSize: '10px',
   },
-}
+};
 
-export default TodoItem
+export default TodoItem;
